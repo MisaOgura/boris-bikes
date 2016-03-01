@@ -4,13 +4,10 @@ describe DockingStation do
 
   it {is_expected.to respond_to(:release_bike)}
 
-  before do
-    @docking_station = DockingStation.new
-    @bike = @docking_station.release_bike
-  end
-
-  it "returns a bike" do
-    expect(@bike.class).to eq("Bike")
+  it "returns a working bike" do
+    station = DockingStation.new
+    my_bike = station.release_bike
+    expect(my_bike).to be_working
   end
 
 end
