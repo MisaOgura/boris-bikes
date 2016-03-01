@@ -2,8 +2,9 @@ require_relative 'bike'
 
 class DockingStation
   attr_reader :capacity
+  DEFAULT_CAPACITY = 20
   def initialize
-    @capacity = 20
+    @capacity = DEFAULT_CAPACITY
     @bikes_array = [Bike.new]
     @bike = Bike.new
   end
