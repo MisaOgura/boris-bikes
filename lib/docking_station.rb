@@ -5,12 +5,13 @@ class DockingStation
   DEFAULT_CAPACITY = 20
   def initialize(capacity=DEFAULT_CAPACITY)
     @capacity = capacity
-    @bikes_array = [Bike.new]
-    @bike = Bike.new
+    @bikes_array = []
   end
 
   def release_bike
     raise 'Docking station is EMPTY!!!' if empty?
+    raise 'Cannot release a broken bike' unless @bikes_array.last.is_working
+    @bike = @bikes_array.pop
     @bike
   end
 
