@@ -29,4 +29,13 @@ describe DockingStation do
       expect { subject.dock Bike.new }.to raise_error('Station is full') if subject.bikes == subject.capacity
     end
   end
+
+  describe '#new' do
+    it "Changes the capacity when given a value" do
+      station = DockingStation.new(25)
+      expect(station.capacity).to eq 25
+    end
+  end
+
+
 end
