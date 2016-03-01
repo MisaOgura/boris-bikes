@@ -9,7 +9,7 @@ class DockingStation
   end
 
   def release_bike
-    raise 'Docking station is EMPTY!!!' if bikes == 0
+    raise 'Docking station is EMPTY!!!' if is_empty?
     @bike
   end
 
@@ -26,4 +26,9 @@ class DockingStation
   def is_full?
     bikes == @capacity
   end
+
+  def is_empty?
+    bikes == 0
+  end
+
 end
