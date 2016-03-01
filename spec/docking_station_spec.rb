@@ -26,7 +26,7 @@ describe DockingStation do
         bike = Bike.new
         subject.dock bike
       end
-      expect { subject.dock Bike.new }.to raise_error('Station is full') if subject.is_full?
+      expect { subject.dock Bike.new }.to raise_error('Station is full') if subject.bikes == subject.capacity
     end
   end
 end

@@ -9,12 +9,12 @@ class DockingStation
   end
 
   def release_bike
-    raise 'Docking station is EMPTY!!!' if is_empty?
+    raise 'Docking station is EMPTY!!!' if empty?
     @bike
   end
 
   def dock(bike)
-    raise 'Station is full' if is_full?
+    raise 'Station is full' if full?
     @bikes_array << bike
     bike
   end
@@ -23,11 +23,13 @@ class DockingStation
     @bikes_array.length
   end
 
-  def is_full?
+private
+
+  def full?
     bikes == @capacity
   end
 
-  def is_empty?
+  def empty?
     bikes == 0
   end
 
