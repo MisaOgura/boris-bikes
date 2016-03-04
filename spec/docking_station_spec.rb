@@ -8,6 +8,7 @@ describe DockingStation do
   it { is_expected.to respond_to :release_bike }
   it { is_expected.to respond_to(:dock).with(1).argument }
   it { is_expected.to respond_to(:bikes) }
+  # it_behaves_like "a bike_container"
 
   describe 'create docking station' do
     it 'if no arguments default capacity is 20' do
@@ -53,5 +54,10 @@ describe DockingStation do
   it "loads bikes from van" do
     allow(van).to receive(:loaded_bikes=)
     expect(subject.accept_fixed_bikes(van)).to eq [good_bike]
+  end
+
+  it "displays loaded bikes" do
+    subject.dock(good_bike)
+    expect(subject.bikes).to eq([good_bike])
   end
 end
