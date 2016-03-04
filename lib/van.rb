@@ -16,8 +16,28 @@ class Van
   end
 
   def dropoff(garage)
-    garage.bikes = @bikes
+    @bikes.each do |bike|
+      bike.report_broken
+      garage.bikes << bike
+    end
     @bikes = []
   end
 
+  def collect(garage)
+    garage.bikes.each {|bike| @bikes << bike if bike.broken? == false}
+    garage.bikes = []
+  end
+
 end
+
+# feature test
+p broken_bike = Bike.new
+broken_bike.report_broken
+p broken_bike
+van = Van.new
+van.bikes << broken_bike
+p van.bikes
+garage = Garage.new
+van.dropoff(garage)
+p van.bikes
+p garage.bikes
